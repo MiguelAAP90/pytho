@@ -1,0 +1,30 @@
+#saving data frames into csv in any path into the computer:
+--------------------------------------------- taking tiker from yahoo----------------------------------------
+import time 
+import datetime
+import pandas  as pd
+
+
+tiker = (input("Insert Tiker:")).upper()
+
+
+period1 = int(time.mktime(datetime.datetime(2015, 1, 1, 23, 53).timetuple()))
+period2 = int(time.mktime(datetime.datetime.now().timetuple()))
+interval1 = '1wk'
+
+#saving data frame.
+
+data_tiket = f'https://query1.finance.yahoo.com/v7/finance/download/{tiker}?period1={period1}&period2={period2}&interval={interval1}&events=history&includeAdjustedClose=true'
+
+df = pd.read_csv(data_tiket)
+
+------------------------------------------saving data -------------------------------------------------------------------------------------------------------------
+
+
+#saving data frame.
+
+df.to_csv (r'r'Path where you want to store the exported CSV file\File Name.csv', index = False, header=True)
+
+######note: remember  to include at the end of the path name of how docucument should call if not you will get an error "PermissionError: [Errno 13] Permission denied:"######
+
+print(df)
